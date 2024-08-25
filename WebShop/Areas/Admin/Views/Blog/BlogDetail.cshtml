@@ -1,0 +1,40 @@
+﻿@model WebShop.Models.Blog
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div style="margin-left:50px;" class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Blog Details</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.Title</h5>
+                            <p class="card-text">@Model.Content</p>
+                            <p class="card-text"><strong>Author:</strong> @Model.Author</p>
+                            <p class="card-text"><strong>Created At:</strong> @Model.CreatedAt</p>
+                            @if (!string.IsNullOrEmpty(Model.ImgUrl))
+                            {
+                                <img src="~/media/blogs/@Model.ImgUrl" alt="Blog Image" class="img-fluid" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAllBlos">Back to List</a>
+</div>

@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@using WebShop.Models
+@model WebShop.Models.Product
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Product Details</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <h5 class="mt-0 font-14 mb-3">Product Information</h5>
+                        <dl class="row">
+                            <dt class="col-sm-3">Id:</dt>
+                            <dd class="col-sm-9">@Model.Id</dd>
+
+                            <dt class="col-sm-3">Name:</dt>
+                            <dd class="col-sm-9">@Model.Name</dd>
+
+                            <dt class="col-sm-3">Slug:</dt>
+                            <dd class="col-sm-9">@Model.Slug</dd>
+
+                            <dt class="col-sm-3">Descriptions:</dt>
+                            <dd class="col-sm-9">@Model.Description</dd>
+
+                            <dt class="col-sm-3">Image:</dt>
+                            <dd class="col-sm-9">@Model.ImageUpload</dd>
+
+                            <dt class="col-sm-3">Price:</dt>
+                            <dd class="col-sm-9">@Model.Price</dd>
+
+                            <dt class="col-sm-3">Rating:</dt>
+                            <dd class="col-sm-9">@Model.Rating</dd>
+
+                            <dt class="col-sm-3">Brand:</dt>
+                            <dd class="col-sm-9">@Model.Brand.Name</dd>
+
+                            <dt class="col-sm-3">Category:</dt>
+                            <dd class="col-sm-9">@Model.Category.Name</dd>
+
+                            <dt><a asp-area="Admin" asp-controller="Product" asp-action="GetAllProducts">Back</a></dt>
+                            <dd class="col-sm-9"></dd>
+                            <dt><a asp-area="Admin" asp-controller="Product" asp-action="EditProduct" asp-route-id="@Model.Id">Edit</a></dt>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>

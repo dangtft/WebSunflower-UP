@@ -98,7 +98,7 @@
             @foreach (var item in Model.Products)
             {
                 <div href="#" class="item">
-                    <img src="~/images/@item.Image" alt="Hình ảnh">
+                    <img src="~/media/products/@item.Image" alt="Hình ảnh">
                     <h4>@item.Name</h4>
                     <div class="rating">
                         <i class="fa fa-star" style="color: #e72463;"></i>
@@ -110,7 +110,7 @@
                         <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="detail">DETAIL</a>
                     </div>
 
-                    <a asp-controller="ShopoingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
 
                 </div>
             }
@@ -187,7 +187,7 @@
                 {
                     <div id="blog1">
                         <div class="categories-img mb-30">
-                            <a class="img1"><img src="@item.ImgUrl" alt=""></a>
+                            <a class="img1"><img src="~/media/blogs/@item.ImgUrl" alt=""></a>
                         </div>
                         <div class="contentblog">
                             <h4 style="color: #e72463;">@item.Title</h4>

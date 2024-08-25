@@ -1,0 +1,32 @@
+﻿@model WebShop.Models.Blog
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div style="margin-left:50px;" class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Delete Blog</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Are you sure you want to delete the blog titled "@Model.Title"?</h5>
+                    <form asp-action="DeleteConfirmed" method="post">
+                        <input type="hidden" asp-for="BlogId" />
+                        <div class="form-group">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <a asp-action="GetAllBlos" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

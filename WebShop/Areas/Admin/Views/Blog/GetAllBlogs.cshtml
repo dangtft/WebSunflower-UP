@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebShop.Models.Blog>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div style="margin-left:50px;" class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">All Blogs</h4>
+                    <a asp-action="CreateBlog" class="btn btn-primary mb-3">Create New Blog</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Created At</th>
+                                    <th>Is Hot</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var blog in Model)
+                                {
+                                    <tr>
+                                        <td>@blog.BlogId</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(blog.ImgUrl))
+                                            {
+                                                <img src="~/media/blogs/@blog.ImgUrl" alt="Blog Image" style="width:100px; height:auto;" />
+                                            }
+                                            else
+                                            {
+                                                <span>No Image</span>
+                                            }
+                                        </td>
+                                        <td>@blog.Title</td>
+                                        <td>@blog.Author</td>
+                                        <td>@blog.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>
+                                            @if (blog.IsHot)
+                                            {
+                                                <span class="badge badge-success">Hot</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-secondary">Not Hot</span>
+                                            }
+                                        </td>
+                                        <td>
+                                        <td><a asp-action="">Detail</a></td>
+                                            <a asp-action="BlogDetail" asp-route-id="@blog.BlogId" class="btn btn-info btn-sm">View</a>
+                                            <a asp-action="DeleteBlog" asp-route-id="@blog.BlogId" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

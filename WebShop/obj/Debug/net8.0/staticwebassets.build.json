@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x5bopR4DV/GOrZlqzD41SMCpaPiwFrgddAdbtOFOh8Q=",
+  "Hash": "xD8XTe09eKhcXVV0WMLrjKhk/YWMaEXdM4EQjAkRa1k=",
   "Source": "WebShop",
   "BasePath": "_content/WebShop",
   "Mode": "Default",
@@ -55687,6 +55687,44 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\blogs\\blog1.jpg",
+      "SourceId": "WebShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\",
+      "BasePath": "_content/WebShop",
+      "RelativePath": "media/blogs/blog1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\media\\blogs\\blog1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\1.jpg",
+      "SourceId": "WebShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\",
+      "BasePath": "_content/WebShop",
+      "RelativePath": "media/products/1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\media\\products\\1.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\8440434c-28c9-4d18-a271-afca425ea8f6_tulip.jpg",
       "SourceId": "WebShop",
       "SourceType": "Discovered",
@@ -55704,6 +55742,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\media\\products\\8440434c-28c9-4d18-a271-afca425ea8f6_tulip.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\tulip.jpg",
+      "SourceId": "WebShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\",
+      "BasePath": "_content/WebShop",
+      "RelativePath": "media/products/tulip.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\media\\products\\tulip.jpg"
     }
   ]
 }

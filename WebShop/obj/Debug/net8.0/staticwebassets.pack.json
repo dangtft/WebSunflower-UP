@@ -11469,8 +11469,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\blogs\\blog1.jpg",
+      "PackagePath": "staticwebassets\\media\\blogs\\blog1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\1.jpg",
+      "PackagePath": "staticwebassets\\media\\products\\1.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\8440434c-28c9-4d18-a271-afca425ea8f6_tulip.jpg",
       "PackagePath": "staticwebassets\\media\\products\\8440434c-28c9-4d18-a271-afca425ea8f6_tulip.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebShop\\WebShop\\wwwroot\\media\\products\\tulip.jpg",
+      "PackagePath": "staticwebassets\\media\\products\\tulip.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebShop.Microsoft.AspNetCore.StaticWebAssets.props",

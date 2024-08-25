@@ -67,9 +67,9 @@
                                             <td>@item.Price</td>
                                             <td>@item.Category.Name</td>
                                             <td>@item.Brand.Name</td>
-                                            <td><a href="@Url.Action("ProductDetails", "Admin", new { id = item.Id })">Detail</a></td>
-                                            <td><a asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@item.Id">Delete</a></td>
-                                            <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@item.Id">Edit</a></td>
+                                            <td><a href="@Url.Action("ProductDetail", "Product", new { id = item.Id })">Detail</a></td>
+                                            <td><a asp-area="Admin" asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@item.Id">Delete</a></td>
+                                            <td><a asp-area="Admin" asp-controller="Product" asp-action="EditProduct" asp-route-id="@item.Id">Edit</a></td>
                                         </tr>
                                     }
                                 </tbody>

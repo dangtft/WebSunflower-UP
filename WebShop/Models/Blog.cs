@@ -1,4 +1,8 @@
-﻿namespace WebShop.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebShop.Repository.Validation;
+
+namespace WebShop.Models
 {
     public class Blog
     {
@@ -11,5 +15,10 @@
         public DateTime CreatedAt { get; set; }
         public bool IsHot { get; set; }
         public List<Comment>? Comments { get; set; }
+
+        [NotMapped]
+        [Required(ErrorMessage = "Image is required.")]
+        [FileExtension(new string[] { ".jpg", ".jpeg", ".png", ".gif" })]
+        public IFormFile ImageUpload { get; set; }
     }
 }
