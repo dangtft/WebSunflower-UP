@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebShop.Models
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {   
+        <li class="nav-item">
+            <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" style="display:none;">
+                @Html.AntiForgeryToken()
+            </form>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                <i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown">
+                <li style="padding:10px">@User.Identity.Name</li>
+                <li style="padding:10px">
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">Logout</a>
+                </li>
+                <li style="padding:10px"><a asp-controller="Checkout" asp-action="AllOrderCompleted">All Orders</a></li>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a href="#">
+                <i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown">
+                <li style="padding:10px"><a asp-controller="Account" asp-action="Login">Login</a></li>
+                <li style="padding:10px"><a asp-controller="Account" asp-action="Register">Register</a></li>
+            </ul>
+        </li>
+    }
+</ul>

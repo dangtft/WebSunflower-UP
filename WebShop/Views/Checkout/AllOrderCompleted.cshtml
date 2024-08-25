@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebShop.Models.Order>
+
+<div class="ab-slider">
+    <img src="~/assets/images/slider/2-2.jpg" alt="Slider Image">
+</div>
+
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">All Orders</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <li>All Orders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (Model.Any())
+{
+    <div class="justify-content-center align-content-center">
+        <table style="margin: 50px auto; width: 90%;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Name</th>
+                    <th>Product</th>
+                    <th>Order Total</th>
+                    <th>Address</th>
+                    <th>Order Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.FullName</td>
+                        <td>
+                            @if (order.OrderDetails != null && order.OrderDetails.Any())
+                            {
+                                @foreach (var orderDetail in order.OrderDetails)
+                                {
+                                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                        <img src="~/images/@Url.Content(orderDetail.Product?.Image)" alt="Product Image" style="width: 50px; height: 50px; margin-right: 10px;" />
+                                        <span>@orderDetail.Product?.Name x @orderDetail.Quantity</span>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <span>No products found.</span>
+                            }
+                        </td>
+                        <td>
+                            @if (order.OrderDetails != null)
+                            {
+                                foreach (var orderDetail in order.OrderDetails)
+                                {
+                                    @orderDetail.Price.ToString("C")
+                                    ;
+                                }
+                            }
+                        </td>
+                        <td>@order.Address</td>
+                        <td>@order.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No completed orders.</p>
+}

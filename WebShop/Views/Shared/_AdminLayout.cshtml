@@ -1,0 +1,174 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assetsAdmin/images/favicon.ico">
+    <!-- App css -->
+  
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/assetsAdmin/css/bootstrap.min.css"type="text/css" id="bootstrap-stylesheet">
+    <link href="~/assetsAdmin/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assetsAdmin/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+
+</head>
+
+<body class="left-side-menu-dark">
+
+    <div id="wrapper">
+
+
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                       
+                        <span class="pro-user-name ml-1">
+                             @User.Identity.Name
+                        </span>
+                    </a>
+                   
+                </li>
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="#" class="logo text-center logo-dark">
+                    <span class="logo-lg">
+                        <img src="~/assetsAdmin/images/logo-dark.png" alt="" height="26">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="~/assetsAdmin/images/logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
+
+                <a href="index.html" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="~/assetsAdmin/images/logo-light.png" alt="" height="26">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="~/assetsAdmin/images/logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
+            </div>
+
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
+
+                <li class="d-none d-sm-block">
+                    <form class="app-search">
+                        <div class="app-search-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+
+            <div class="user-box">
+                <div class="float-left">
+
+                </div>
+                <div style="margin-left:10px;" class="user-info">
+                    <a href="#"> @User.Identity.Name</a>
+                    <p class="text-muted m-0">Admin</p>
+                </div>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul class="metismenu" id="side-menu">
+
+                    <li class="menu-title">Navigation</li>
+
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index">
+                            <i class="ti-home"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="ti-files"></i>
+                            <span> Manager </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a asp-area="Admin" asp-controller="Product" asp-action="GetAllProducts">Product</a></li>
+                            <li><a asp-area="Admin" asp-controller="Blog" asp-action="AdminBlogDashboard">Blog</a></li>
+                            <li><a asp-area="Admin" asp-controller="Admin" asp-action="AllSubscriber">Subscriber</a></li>
+                            <li><a asp-area="Admin" asp-controller="Contact" asp-action="AllContact">Contacts</a></li>
+                            <li><a asp-area="Admin" asp-controller="User" asp-action="AllUsersAndRoles">Users</a></li>
+                            <li><a asp-area="Admin" asp-controller="Role" asp-action="Index">Roles</a></li>
+                            <li><a asp-area="Admin" asp-controller="Order" asp-action="ManageOrders">All Order</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a asp-controller="Account" asp-action="LogOut">LogOut</a></li>
+                </ul>
+
+            </div>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+       
+
+    </div>
+    <!-- END wrapper -->
+  
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+    
+
+    @RenderBody()
+    <!-- Vendor js -->
+    <script src="~/assetsAdmin/js/vendor.min.js"></script>
+
+    <script src="~/assetsAdmin/libs/morris-js/morris.min.js"></script>
+    <script src="~/assetsAdmin/libs/raphael/raphael.min.js"></script>
+
+    <script src="~/assetsAdmin/js/pages/dashboard.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/assetsAdmin/js/app.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/js/index.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", false)
+
+</body>
+
+</html>

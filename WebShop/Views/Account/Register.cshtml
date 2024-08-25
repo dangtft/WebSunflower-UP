@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+@model WebShop.ViewModel.RegisterViewModel
+<div class="ab-slider">
+    <img src="/assets/images/slider/2-2.jpg">
+</div>
+<div id="ab-slider" class="breadcrumbs-area position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-content position-relative section-content">
+                    <h3 class="title-3">Register</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                        <li>Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="login-register-area mt-no-text">
+    <div class="container container-default-2 custom-area">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
+                <div class="login-register-wrapper">
+                    <div class="section-content text-center mb-5">
+                        <h2 class="title-4 mb-2">Create Account</h2>
+                        <p class="desc-content">Please Register using account detail bellow.</p>
+                    </div>
+                    <form asp-action="Register" asp-controller="Account" method="post">
+
+                        <div class="single-input-item mb-3">
+                            <label asp-for="UserName" class="control-label"></label>
+                            <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" placeholder="Name" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="single-input-item mb-3">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Name@example.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="single-input-item mb-3">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="single-input-item mb-3">
+                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="single-input-item mb-3">
+                            <button type="submit" id="registerSubmit" class="btn flosun-button secondary-btn theme-color rounded-0">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

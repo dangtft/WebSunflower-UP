@@ -1,0 +1,136 @@
+﻿@using WebShop.Models
+@{
+    Layout = "_AdminLayout";
+}
+@model IEnumerable<WebShop.Models.Product>
+@{
+    Paginate pager = ViewBag.Pager ?? new Paginate();
+    int pageNo = pager.CurrentPage;
+}
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <h4 class="header-title mb-3">Welcome !</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                       
+                        <h5 class="mt-0 font-14 mb-3">Products</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover mails m-0 table table-actions-bar table-centered">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Slug</th>
+                                        <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>Brand</th>
+                                        <th>
+                                            <a class="btn btn-primary" asp-area="Admin" asp-controller="Product" asp-action="CreateProduct" style="color:#fff">Add Product</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                @item.Id
+                                            </td>
+
+                                            <td>
+                                                @item.Name
+                                            </td>
+
+                                            <td>
+                                                @item.Description
+                                            </td>
+                                            <td>
+                                                @item.Slug
+                                            </td>
+                                            <td>
+                                                <img src="~/images/@item.Image" style="width:100px;height:100px;"/>
+                                            </td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Category.Name</td>
+                                            <td>@item.Brand.Name</td>
+                                            <td><a href="@Url.Action("ProductDetails", "Admin", new { id = item.Id })">Detail</a></td>
+                                            <td><a asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@item.Id">Delete</a></td>
+                                            <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@item.Id">Edit</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                       
+                        <div class="container">
+                            @if (pager.TotalPages > 0) //2 trang
+                            {
+                                <ul id="page" style="margin-top: 20px;" class="pagination justify-content-center">
+
+                                    @if (pager.CurrentPage > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="GetAllProducts"
+                                               asp-route-pg="1">First</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="GetAllProducts"
+                                               asp-route-pg="@(pager.CurrentPage - 1)">Previous</a>
+                                        </li>
+                                    }
+                                    @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++) //1 = 1 <= 2
+                                    {
+                                        <li class="page-item @(pge==pager.CurrentPage ? "active" : "")">
+                                            <a class="page-link" asp-action="GetAllProducts" asp-route-pg="@pge">@pge</a>
+                                        </li>
+
+
+                                    }
+                                    @if (pager.CurrentPage < pager.TotalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="GetAllProducts"
+                                               asp-route-pg="@(pager.CurrentPage+1)">Next</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="GetAllProducts"
+                                               asp-route-pg="@(pager.TotalPages)">Last</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div>
+        <!-- end container-fluid -->
+
+
+    </div>
+    <!-- end content -->
+
+</div>
+<style>
+    .page-item.active .page-link {
+        background-color: #E72463;
+        border: none;
+    }
+</style>

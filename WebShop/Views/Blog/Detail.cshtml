@@ -1,0 +1,148 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebShop.ViewModel.BlogVM
+
+<div class="ab-slider">
+    <img src="/assets/images/slider/2-2.jpg">
+</div>
+<div id="ab-slider" class="breadcrumbs-area position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-content position-relative section-content">
+                    <h3 class="title-3">Blog-Detail</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                        <li>Blog-Detail</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-area-wrapper">
+
+    <!-- Blog Main Area Start Here -->
+    <div class="blog-main-area">
+        <div class="container container-default custom-area">
+            <div class="row">
+                <div class="col-12 col-custom widget-mt">
+                    <!-- Blog Details wrapper Area Start -->
+                    <div class="blog-post-details">
+                        <figure class="blog-post-thumb mb-5">
+                            <img src="@Model.Blog?.ImgUrl">
+                        </figure>
+                        <section class="blog-post-wrapper product-summery">
+                            <div class="section-content section-title">
+                                <h2 class="section-title-2 mb-3">@Model.Blog?.Title</h2>
+                                <blockquote class="blockquote mb-4">
+                                    <p>@Model.Blog?.Content</p>
+                                </blockquote>
+                                <p class="mb-4">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            </div>
+
+
+                            <div class="comment-area-wrapper mt-5">
+                                <div class="comments-view-area">
+                                    <h3 style="color: black;" class="mb-5">@(Model.TotalCommentsCount) Comments</h3>
+                                    @if (Model.Comments != null)
+                                    {
+                                        foreach (var item in Model.Comments)
+                                        {
+                                            <div class="single-comment-wrap mb-4 d-flex">
+                                                <figure class="author-thumb">
+                                                    <a href="#">
+                                                        <img src="/assets/images/review/1.jpg" alt="Author">
+                                                    </a>
+                                                </figure>
+                                                <div class="comments-info">
+                                                    <p class="mb-2">@item.Text</p>
+                                                    <div class="comment-footer d-flex justify-content-between">
+                                                        <a class="author"><strong>@item.UserName</strong> - @item.CreatedAt.ToString("dd/MM/yyyy")</a>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>No comments available.</p>
+                                    }
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                    <!-- Blog Details Wrapper Area End -->
+                    <!-- Blog Comments Area Start Here -->
+                    <form asp-controller="Blog" asp-action="AddComment" method="post">
+                        <div class="comment-box">
+                            <h3 style="color: black;">Leave A Comment</h3>
+                            <div class="row">
+                                <div class="col-12 col-custom">
+                                    <div class="input-item mt-4 mb-4">
+                                        <input type="hidden" asp-for="Comment.BlogId" value="@Model.Blog?.BlogId" />
+                                        <textarea cols="30" rows="5" asp-for="Comment.Text" class="border rounded-0 w-100 custom-textarea input-area" placeholder="Message"></textarea>
+                                        <span asp-validation-for="Comment.Text" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-custom">
+                                    <div class="input-item mb-4">
+                                        <input asp-for="Comment.UserName" class="border rounded-0 w-100 input-area name" type="text" placeholder="Name">
+                                        <span asp-validation-for="Comment.UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-custom">
+                                    <div class="input-item mb-4">
+                                        <input asp-for="Comment.Email" class="border rounded-0 w-100  input-area email" type="text" placeholder="Email">
+                                        <span asp-validation-for="Comment.Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-custom mt-40">
+                                    <button style="background-color: #E72463;color: #fff;" type="submit" class="btn flosun-button primary-btn rounded-0 w-100">Post comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Blog Comments Area End Here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog Main Area End Here -->
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.btn-reply').click(function () {
+                var commentId = $(this).data('comment-id');
+                $('#ReplyToCommentId').val(commentId);
+                $.ajax({
+                    url: '/Blog/GetCommentById', // Thay đổi đường dẫn nếu cần
+                    method: 'GET',
+                    data: { commentId: commentId },
+                    success: function (data) {
+                        // Cập nhật form thêm Comment với thông tin của Comment đang được trả lời
+                        $('#Comment_Text').val(''); // Đặt lại nội dung Comment
+                        $('#Comment_UserName').val(''); // Đặt lại tên người dùng
+                        $('#Comment_Email').val(''); // Đặt lại địa chỉ email
+                        $('#Comment_ReplyToCommentId').val(commentId); // Lưu ID của Comment đang được trả lời
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+}

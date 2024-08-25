@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebShop.Models.Contact
+
+<div class="ab-slider">
+    <img src="~/assets/images/slider/2-2.jpg">
+</div>
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">Contact Us</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="contact-us-area mt-no-text">
+        <div class="container custom-area">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-custom">
+                    <div class="contact-info-item">
+                        <div class="con-info-icon">
+                            <i class="lnr lnr-map-marker"></i>
+                        </div>
+                        <div class="con-info-txt">
+                            <h4>Our Location</h4>
+                            <p>(800) 123 456 789 / (800) 123 456 789 <br>info@example.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-custom">
+                    <div class="contact-info-item">
+                        <div class="con-info-icon">
+                            <i class="lnr lnr-smartphone"></i>
+                        </div>
+                        <div class="con-info-txt">
+                            <h4>Contact us Anytime</h4>
+                            <p>Mobile: 012 345 678<br>Fax: 123 456 789</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-custom text-align-center">
+                    <div class="contact-info-item">
+                        <div class="con-info-icon">
+                            <i class="lnr lnr-envelope"></i>
+                        </div>
+                        <div class="con-info-txt">
+                            <h4>Support Overall</h4>
+                            <p>Support24/7@example.com <br> info@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section data-bs-version="5.1" class="form7 cid-tsJ8wGtENs" id="form7-q">
+                <div class="container">
+                    <div class="mbr-section-head justify-content-center">
+                        <h3 style="color:black;width:fit-content;" class="  align-center ">
+                            GET IN TOUCH
+                        </h3>
+                    </div>
+                    <div class="row  mt-4">
+                        <div class="col-lg-8 ">
+                            <form method="post" asp-controller="Contact" asp-action="SubmitContact">
+                                <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
+                                    One of our team will be in contact with you shortly.
+                                </p>
+                                <div class="dragArea row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="name">
+
+                                        <input asp-for="@Model.Name" placeholder="Name" class="form-control" id="name-form7-q" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="email">
+
+                                        <input asp-for="@Model.Email" placeholder="Email" class="form-control" id="email-form7-q" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div data-for="message" class="col-lg-12 col-md-12 col-sm-12 form-group mb-3">
+
+                                        <textarea asp-for="@Model.Message" class="form-control" rows="5" placeholder="Message"></textarea>
+                                        <span asp-validation-for="Message" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-auto mbr-section-btn align-center">
+                                        <button style="background-color: #E72463 ;border:none;width: 200px;" type="submit" class="btn btn-primary display-4">Send</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

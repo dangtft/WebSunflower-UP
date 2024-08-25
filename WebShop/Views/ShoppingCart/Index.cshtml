@@ -1,0 +1,141 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model IEnumerable<ShoppingCartItem>
+@if (Model.Count() != 0)
+{
+    <div class="ab-slider">
+        <img src="/assets/images/slider/2-2.jpg">
+    </div>
+    <section>
+        <div id="ab-slider" class="breadcrumbs-area position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="breadcrumb-content position-relative section-content">
+                            <h3 class="title-3">Cart</h3>
+                            <ul class="title">
+                                <li><a asp-controller="Product" asp-action="Index">Home</a></li>
+                                <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                                <li>Cart</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        @Html.Partial("_NotificationPartial")
+        <div class="cart-main-wrapper mt-no-text">
+            <div class="container custom-area">
+                <div class="row">
+                    <div class="col-lg-12 col-custom">
+                        <!-- Cart Table Area -->
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="pro-thumbnail">Image</th>
+                                        <th class="pro-title">Product</th>
+                                        <th class="pro-price">Price</th>
+                                        <th class="pro-quantity">Quantity</th>
+                                        <th class="pro-subtotal">Total</th>
+                                        <th class="pro-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+
+
+                                        <tr>
+                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/images/@item.Product.Image" alt="Product" /></a></td>
+                                            <td class="pro-title">@item.Product.Name</td>
+                                            <td class="pro-price"><span>@item.Product.Price</span></td>
+                                            <td class="pro-quantity">
+                                                <div class="quantity">
+                                                    <div class="cart-plus-minus">
+                                                        <a asp-controller="ShoppingCart" asp-action="DecreaseQuantity" asp-route-pId="@item.Product.Id" class="dec qtybutton">-</a>
+                                                        <input type="text" value="@item.Qty" readonly />
+                                                        <a asp-controller="ShoppingCart" asp-action="IncreaseQuantity" asp-route-pId="@item.Product.Id" class="inc qtybutton">+</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="pro-subtotal"><span>@((item.Qty * item.Product.Price).ToString("C"))</span></td>
+                                            <td class="pro-remove"><a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-pId="@item.Product.Id"><i class="lnr lnr-trash"></i></a></td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 ml-auto col-custom">
+                        <!-- Cart Calculation Area -->
+                        <div class="cart-calculator-wrapper">
+                            <div class="cart-calculate-items">
+                                <h3>Cart Totals</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>@ViewBag.TotalCart.ToString("c")</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quatity total</td>
+                                            <td>@Model.Sum(item => item.Qty)</td>
+                                        </tr>
+                                        <tr class="total">
+                                            <td>Total</td>
+                                            <td class="total-amount">@ViewBag.TotalCart.ToString("c").</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="cart-proceed">
+                                <a asp-controller="Checkout" asp-action="Checkout" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed To Checkout</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <div style="margin-bottom: 100px;" class="container">
+        <br><br><br><br>
+        <div class="text-center">
+            <img src="https://www.svgrepo.com/show/17356/empty-cart.svg" class="img-fluid"
+                 style="width: 200px; height: 200px; margin-left: auto; margin-right: auto" alt="...">
+            <br>
+            <h1><strong>Your cart is empty</strong></h1>
+            <br>
+            <p>
+                Before proceed to checkout you must add some products to your shopping cart. You will find a lot of
+                interesting products on our "Shop" page.
+            </p>
+            <a style="background-color:#E72463;color:#fff;border:none;" asp-controller="Product" asp-action="Shop" class="btn btn-primary w-20">
+                Start Shopping
+            </a>
+        </div>
+    </div>
+}
+
+

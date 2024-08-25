@@ -1,0 +1,65 @@
+﻿
+
+@{
+    ViewData["Title"] = "Log in";
+}
+@model WebShop.ViewModel.LoginViewModel
+<div class="ab-slider">
+    <img src="~/assets/images/slider/2-2.jpg">
+</div>
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">Login</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                            <li>Login</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>d
+
+<div style="width:99%" class="row justify-content-center align-items-center">
+    <div class="col-md-4">
+        <section>
+            <h1>@ViewData["Title"]</h1>
+            <form asp-action="Login" asp-controller="Account" id="account" method="post">
+
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" placeholder="UserName" />
+                    <label asp-for="UserName" class="form-label">UserName</label>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button style="background:#E72463;border:none;" id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+                
+            </form>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

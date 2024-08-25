@@ -1,0 +1,119 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebShop.ViewModel.BlogVM
+@{
+    Paginate pager = ViewBag.Pager ?? new Paginate();
+    int pageNo = pager.CurrentPage;
+}
+<div class="ab-slider">
+    <img src="/assets/images/slider/2-2.jpg">
+</div>
+<div id="ab-slider" class="breadcrumbs-area position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-content position-relative section-content">
+                    <h3 class="title-3">Blog</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                        <li>Blog</li>
+                    </ul>
+                    <form method="get">
+                        <input style="border:solid 0.5px #E72463" type="text" name="blogName" placeholder="Search Blog" />
+                        <button type="submit" style="background-color :#E72463;border:none;color:#fff">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-main-area">
+    <div class="container container-default custom-area">
+        <div class="row">
+            <div class="col-12 col-custom widget-mt">
+                <!-- Blog Wrapper Start -->
+                <div class="row">
+                    @foreach (var item in Model.Blogs)
+                    {
+                        <div class="col-12 col-custom mb-30">
+                            <div class="blog-lst">
+                                <div class="single-blog">
+                                    <div class="blog-image">
+                                        <a class="d-block" asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId">
+                                            <img src="@item.ImgUrl" alt="Blog Image" class="w-100">
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-text">
+                                            <h4><a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId">@item.Title</a></h4>
+                                            <div class="blog-post-info">
+                                                <span><a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId">By @item.Author</a></span>
+                                                <span>@item.CreatedAt.ToString("dd/MM/yyyy")</span>
+                                            </div>
+                                            <p>Lorem ipsu dolor sit amet cons elits cumque adipisicing, sed do incid eiusmod tempor ut labore et dolore eveniet .</p>
+                                            <a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId" class="readmore">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <!-- Blog Wrapper End -->
+
+                <!-- Blog Paging Start -->
+                <style>
+                    .page-item.active .page-link {
+                        background-color: #E72463;
+                        border: none;
+                    }
+                </style>
+                <div class="container">
+                    @if (pager.TotalPages > 0) //2 trang
+                    {
+                        <ul id="page" style="margin-top: 20px;" class="pagination justify-content-center">
+
+                            @if (pager.CurrentPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-pg="1">First</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-pg="@(pager.CurrentPage - 1)">Previous</a>
+                                </li>
+                            }
+                            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++) //1 = 1 <= 2
+                            {
+                                <li class="page-item @(pge==pager.CurrentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Index" asp-route-pg="@pge">@pge</a>
+                                </li>
+
+
+                            }
+                            @if (pager.CurrentPage < pager.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-pg="@(pager.CurrentPage+1)">Next</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-pg="@(pager.TotalPages)">Last</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+                <!-- Blog Paging Start -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,230 @@
+﻿@model WebShop.ViewModel.HomeVM
+@Html.Partial("_NotificationPartial")
+<content>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <div class="infor-banner ">
+                    <h3 class="title-slider black-slider-title text-uppercase">Collection</h3>
+                    <h2 class="title">Flowers and Candle <br> Birthday Gift</h2>
+                    <p class="desc-content">Lorem ipsum dolor sit amet, pri autem nemore bonorum te. Autem fierent ullamcorper ius no, nec ea quodsi invenire. </p>
+                    <a asp-controller="Product" asp-action="Shop" class="btn flosun-button secondary-btn rounded-0">Shop Now</a>
+                </div>
+                <img src="~/assets/images/slider/1-1.jpg" class="d-block w-100" alt="First slide">
+            </div>
+            <div class="carousel-item active">
+                <div class="infor-banner ">
+                    <h3 class="title-slider text-uppercase">Top Trend</h3>
+                    <h2 class="title">2022 Flower Trend</h2>
+                    <p class="desc-content">Lorem ipsum dolor sit amet, pri autem nemore bonorum te. Autem fierent ullamcorper ius no, nec ea quodsi invenire. </p>
+                    <a asp-controller="Product" asp-action="Shop" class="btn flosun-button secondary-btn theme-color  rounded-0">Shop Now</a>
+                </div>
+                <img src="~/assets/images/slider/1-2.jpg" class="d-block w-100" alt="First slide">
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="content">
+        <div class="categories-area pt-40">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="cat-1 col-md-4 col-sm-12 col-custom">
+                        <div class="categories-img mb-30">
+                            <a class="img1" asp-controller="Product" asp-action="Shop"><img src="~/assets/images/category/home1-category-1.jpg" alt=""></a>
+                            <div class="categories-content">
+                                <h3>Potted Plant</h3>
+                                <h4>Shop now</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat-2 col-md-8 col-sm-12 col-custom">
+                        <div class="row">
+                            <div class="cat-3 col-md-7 col-custom">
+                                <div class="categories-img mb-30">
+                                    <a class="img2" asp-controller="Product" asp-action="Shop"><img src="~/assets/images/category/home1-category-2.jpg" alt=""></a>
+                                    <div class="categories-content">
+                                        <h3>Potted Plant</h3>
+                                        <h4>Shop now</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cat-4 col-md-5 col-custom">
+                                <div class="categories-img mb-30">
+                                    <a class="img3" asp-controller="Product" asp-action="Shop"><img src="~/assets/images/category/home1-category-3.jpg" alt=""></a>
+                                    <div class="categories-content">
+                                        <h3>Potted Plant</h3>
+                                        <h4>Shop now</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cat-5 col-md-4 col-custom">
+                                <div class="categories-img mb-30">
+                                    <a class="img4" asp-controller="Product" asp-action="Shop"><img src="~/assets/images/category/home1-category-4.jpg" alt=""></a>
+                                    <div class="categories-content">
+                                        <h3>Potted Plant</h3>
+                                        <h4>Shop now</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cat-6 col-md-8 col-custom">
+                                <div class="categories-img mb-30">
+                                    <a class="img5" asp-controller="Product" asp-action="Shop"><img src="~/assets/images/category/home1-category-5.jpg" alt=""></a>
+                                    <div class="categories-content">
+                                        <h3>Potted Plant</h3>
+                                        <h4>Shop now</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product">
+        <div class="section-title text-center mb-30">
+            <span class="section-title-1">Wonderful gift</span>
+            <h3 class="">Featured Products</h3>
+        </div>
+        <div class="product1">
+            @foreach (var item in Model.Products)
+            {
+                <div href="#" class="item">
+                    <img src="~/images/@item.Image" alt="Hình ảnh">
+                    <h4>@item.Name</h4>
+                    <div class="rating">
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="far fa-star" style="color: #e72463;"></i>
+                        <i class="far fa-star" style="color: #e72463;"></i>
+                        <p>@item.Price</p>
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="detail">DETAIL</a>
+                    </div>
+
+                    <a asp-controller="ShopoingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+
+                </div>
+            }
+        </div>
+
+
+        <div class="detail-product">
+            <a asp-controller="Product" asp-action="Shop">See more</a>
+        </div>
+
+    </div>
+    <div class="deal">
+        <img src="~/assets/images/bg/1.jpg">
+
+    </div>
+
+    <div id="row-item" class="row">
+        <div class="time-content">
+            <h3>DEAL OF THE DAY</h3>
+        </div>
+        <div class="row " id="time-row">
+            <div class="col-md-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Days</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Minutes</th>
+                            <th scope="col">Seconds</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="days" class="countdown-item">00</td>
+                            <td id="hours" class="countdown-item">00</td>
+                            <td id="minutes" class="countdown-item">00</td>
+                            <td id="seconds" class="countdown-item">00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @foreach (var item in Model.Products)
+        {
+            <div id="item" class="cat-1 col-md-4 col-sm-12 col-custom">
+                <img src="~/images/@item.Image">
+                <h4>SunFlower</h4>
+                <div class="rating">
+                    <i class="fa fa-star" style="color: #e72463;"></i>
+                    <i class="fa fa-star" style="color: #e72463;"></i>
+                    <i class="fa fa-star" style="color: #e72463;"></i>
+                    <i class="far fa-star" style="color: #e72463;"></i>
+                    <i class="far fa-star" style="color: #e72463;"></i>
+                    <p>@item.Price</p>
+                    <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="detail">DETAIL</a>
+                </div>
+                <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+            </div>
+        }
+
+
+
+
+    </div>
+    <div class="fromblog">
+        <div class="section-title text-center mb-30" id="blog-title">
+            <span class="section-title-1">From the blog</span>
+            <h3 class="">OUT LATEST POSTS</h3>
+        </div>
+        <div class="blog">
+            @foreach (var item in Model.Blogs)
+            {
+                @if (item.IsHot == true)
+                {
+                    <div id="blog1">
+                        <div class="categories-img mb-30">
+                            <a class="img1"><img src="@item.ImgUrl" alt=""></a>
+                        </div>
+                        <div class="contentblog">
+                            <h4 style="color: #e72463;">@item.Title</h4>
+                            <H5>By @item.Author  @item.CreatedAt.ToString("dd/MM/yyyy")</H5>
+                            <p>@item.Content</p>
+                        </div>
+                        <br>
+                        <div>
+                            <b><a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId">Read more  <i class="fa-solid fa-arrow-down fa-rotate-270"></i></a></b>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+
+    <div id="send" class="row row-cols-1 row-cols-sm-2 row-cols-md-2" bis_skin_checked="1">
+        <div id="send1" class="col" bis_skin_checked="1">
+            <h3>SENDS NEWSLETTER</h3>
+            <p>Enter Your Email Address For Our Mailing List To Keep Your Self Update</p>
+        </div>
+
+        <div id="send1" class="col" bis_skin_checked="1">
+            <form asp-controller="Product" asp-action="Subscribe" method="post">
+                <input type="text" name="Email" placeholder="example@gmail.com">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</content>
+@if (ViewBag.SuccessMessage != null)
+{
+    <script>
+        window.onload = function () {
+            window.alert('@Html.Raw(ViewBag.SuccessMessage)');
+        };
+    </script>
+}

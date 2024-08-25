@@ -1,0 +1,68 @@
+﻿@model WebShop.ViewModel.CheckoutViewModel
+<div class="ab-slider">
+    <img src="~/assets/images/slider/2-2.jpg">
+</div>
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">Check out</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                            <li>Check out</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<form style="margin:20px 0px 50px 0px;" asp-action="Checkout" method="post" role="form">
+    <section data-bs-version="5.1" class="form6 cid-tsFfsp7eqK" id="form6-n">
+
+
+        <div class="container">
+            <div class="mt-5">
+                <!-- Checkout Panel Information-->
+                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                    <h3 style="color:black;" class="fs-5 fw-bolder m-0 lh-1">Shipping Address</h3>
+                </div>
+                <div class="row">
+                    <!-- Full Name-->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="FullName" class="form-label">Full name</label>
+                            <input asp-for="FullName" type="text" class="form-control" placeholder="" value="" required="">
+                        </div>
+                    </div>
+
+                   
+                    <!--Phone-->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="form-label">Phone</label>
+                            <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <!-- Address-->
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label asp-for="Address" class="form-label">Address</label>
+                            <input asp-for="Address" type="text" class="form-control" placeholder="123 Some Street Somewhere"></input>
+                        </div>
+                    </div>
+                    <!-- Address-->
+                </div>
+
+                <div style="margin-top: 10px;" class="col-auto mbr-section-btn align-center">
+                    <button style="background-color:#E72463;color:#fff;border:none;" type="submit" class="btn btn-primary display-4">Place Order</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</form>

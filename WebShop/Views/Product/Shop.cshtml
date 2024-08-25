@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebShop.Models.Product>
+
+@{
+    Paginate pager = ViewBag.Pager ?? new Paginate();
+    int pageNo = pager.CurrentPage;
+}
+
+<div class="ab-slider">
+    <img src="/assets/images/slider/2-2.jpg">
+</div>
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">Shop</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Product" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                            <li>Shop</li>
+                        </ul>
+                        <form method="get">
+                            <input style="border:solid 0.5px #E72463" type="text" name="productName" placeholder="Search Product" />
+                            <button type="submit" style="background-color :#E72463;border:none;color:#fff">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+
+    <div id="all-product" class="product">
+        <div class="section-title text-center mb-30">
+            <span class="section-title-1">Wonderful gift</span>
+            <h3 class="">All Products</h3>
+        </div>
+
+        <div class="product1">
+            @foreach (var item in Model)
+            {
+                <div href="#" class="item">
+                    <img src="~/images/@item.Image" alt="Hình ảnh">
+                    <h4>@item.Name</h4>
+                    <div class="rating">
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="fa fa-star" style="color: #e72463;"></i>
+                        <i class="far fa-star" style="color: #e72463;"></i>
+                        <i class="far fa-star" style="color: #e72463;"></i>
+                        <p>@item.Price.ToString()</p>
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="detail">DETAIL</a>
+                    </div>
+
+                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+
+                </div>
+            }
+        </div>
+
+        <partial name ="_Paging" model="@pager" />
+    </div>
+</section>
