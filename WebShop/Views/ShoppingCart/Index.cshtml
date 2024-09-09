@@ -52,9 +52,6 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-
-
-
                                         <tr>
                                             <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/images/@item.Product.Image" alt="Product" /></a></td>
                                             <td class="pro-title">@item.Product.Name</td>
@@ -72,8 +69,6 @@
                                             <td class="pro-remove"><a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-pId="@item.Product.Id"><i class="lnr lnr-trash"></i></a></td>
                                         </tr>
                                     }
-
-
                                 </tbody>
                             </table>
                         </div>

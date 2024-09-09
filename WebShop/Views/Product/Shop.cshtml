@@ -55,7 +55,8 @@
                         <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="detail">DETAIL</a>
                     </div>
 
-                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+                    @* <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a> *@
+                    <button class="btn btn-default add-to-cart" data-product-id="@item.Id" ><i class="fa fa-shopping-cart"></i>ADD TO CART</button>
 
                 </div>
             }
@@ -64,3 +65,29 @@
         <partial name ="_Paging" model="@pager" />
     </div>
 </section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function () {
+                var Id = $(this).data("product-id");
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("AddToShoppingCart", "ShoppingCart")",
+                    data: { pId: Id }, 
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire(response.message);
+                        } else {
+                            Swal.fire("Failed to add item to cart.");
+                        }
+                    },
+                    error: function () {
+                        Swal.fire("An error occurred while adding the item to the cart.");
+                    }
+                });
+            });
+        });
+    </script>
+}                     

@@ -23,7 +23,7 @@ namespace WebShop.Controllers
             ViewBag.TotalCart = shoppingCartRepository.GetShoppingCartTotal();
             return View(items);
         }
-        public RedirectToActionResult AddToShoppingCart(int pId)
+        public JsonResult AddToShoppingCart(int pId)
         {
             var product = productRepository.GetAllProducts().FirstOrDefault(p => p.Id == pId);
             if (product != null)
@@ -32,10 +32,10 @@ namespace WebShop.Controllers
                 int cartCount = shoppingCartRepository.GetAllShoppingCartItems().Count();
                 HttpContext.Session.SetInt32("CartCount", cartCount);
 
-                TempData["success"] = $"{product.Name} has been added to your cart.";
-                TempData["messageType"] = "success";
+                return Json(new { success = true, message = $"{product.Name} has been added to your cart." });
+               
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Product not found." });
         }
         public RedirectToActionResult RemoveFromShoppingCart(int pId)
         {
